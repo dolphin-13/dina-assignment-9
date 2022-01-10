@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DinaAssignment9Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DinaAssignment9Application.class, args);
+		SpringApplication.run(DinaAssignment9Application.class, args);	
 	}
-
 }
