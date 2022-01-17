@@ -29,27 +29,27 @@ public class RecipeService {
 	}
 
 	public List<Recipe> getVegetarian() {
-		return getAllRecipes().stream()
-                                              .filter(recipe -> recipe.getVegetarian()) //equals(true) is inside already
+		                return getAllRecipes().stream()
+				                              .filter(recipe -> recipe.getVegetarian()) // equals(true) is inside already
 				                              .collect(Collectors.toList());
 	}
 
 	public List<Recipe> getVegan() {
-		return getAllRecipes().stream()
-											  .filter(recipe -> recipe.getVegan())
-											  .collect(Collectors.toList());
+		                return getAllRecipes().stream()
+				                              .filter(recipe -> recipe.getVegan())
+				                              .collect(Collectors.toList());
 	}
-	
+
 	public List<Recipe> getGlutenFree() {
-		return getAllRecipes().stream()
-											  .filter(recipe -> recipe.getGlutenFree())
-											  .collect(Collectors.toList());
+		                return getAllRecipes().stream()
+				                              .filter(recipe -> recipe.getGlutenFree())
+				                              .collect(Collectors.toList());
 	}
-	
+
 	public List<Recipe> getVeganAndGlutenFree() {
-		return getAllRecipes().stream()
-											  .filter(recipe -> recipe.getGlutenFree() && recipe.getVegan())
-											  .collect(Collectors.toList());
+		                return getAllRecipes().stream()
+				                              .filter(recipe -> recipe.getGlutenFree() && recipe.getVegan())
+				                              .collect(Collectors.toList());
 	}
-	
+
 }
