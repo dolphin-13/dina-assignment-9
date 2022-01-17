@@ -2,14 +2,13 @@ package com.coderscampus.dinaassignment9.web;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.coderscampus.dinaassignment9.domain.Recipe;
-import com.coderscampus.dinaassignment9.service.FileService;
+import com.coderscampus.dinaassignment9.service.RecipeService;
 
 //Controllers listen to web created stuff, 
 //GetMapping is used as a part of a Controller, it listens for requests coming in 
@@ -20,42 +19,31 @@ import com.coderscampus.dinaassignment9.service.FileService;
 public class RecipeController {
 
 	@Autowired
-	private FileService fileService;
+	private RecipeService recipeService;
 
-	@GetMapping("/gluten-free")
-	public List<Recipe> glutenFree() throws IOException {
-		return fileService.storeAllRecipes()
-				          .stream()
-				          .filter(recipe -> recipe.getGlutenFree().equals(true))
-				          .collect(Collectors.toList());
-	}
-
-	@GetMapping("/vegan")
-	public List<Recipe> vegan() throws IOException {
-		return fileService.storeAllRecipes()
-				          .stream()
-				          .filter(recipe -> recipe.getVegan().equals(true))
-				          .collect(Collectors.toList());
-	}
-
-	@GetMapping("/vegan-and-gluten-free")
-	public List<Recipe> veganAndGlutenFree() throws IOException {
-		return fileService.storeAllRecipes()
-				          .stream()
-				          .filter(recipe -> recipe.getGlutenFree() && recipe.getVegan().equals(true))
-				          .collect(Collectors.toList());
+	@GetMapping("/all-recipes")
+	public List<Recipe> allRecipes() throws IOException {
+		return recipeService.getAllRecipes();
 	}
 
 	@GetMapping("/vegetarian")
 	public List<Recipe> vegetarian() throws IOException {
-		return fileService.storeAllRecipes()
-				          .stream().filter(recipe -> recipe.getVegetarian().equals(true))
-				          .collect(Collectors.toList());
+		return recipeService.getVegetarian();
 	}
 
-	@GetMapping("/all-recipes")
-	public List<Recipe> allRecipes() throws IOException {
-		return fileService.storeAllRecipes();
+	@GetMapping("/vegan")
+	public List<Recipe> vegan() throws IOException {
+		return recipeService.getVegan();
 	}
 
+	@GetMapping("/gluten-free")
+	public List<Recipe> glutenFree() throws IOException {
+		return recipeService.getGlutenFree();
+	}
+
+	@GetMapping("/vegan-and-gluten-free")
+	public List<Recipe> glutenVeganAndGlutenFree() throws IOException {
+		return recipeService.getVeganAndGlutenFree();
+	}
+	
 }
