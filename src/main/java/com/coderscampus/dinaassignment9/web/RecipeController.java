@@ -42,7 +42,7 @@ public class RecipeController {
 	}
 
 	@GetMapping("/vegan-and-gluten-free")
-	public List<Recipe> glutenVeganAndGlutenFree() throws IOException {
+	public List<Recipe> VeganAndGlutenFree() throws IOException {
 		return recipeService.getVeganAndGlutenFree();
 	}
 	
